@@ -3,6 +3,6 @@
 #include "ppm.hh"
 int main() {
   Ppm image(std::cin);
-  image.display();
+  std::cout << image.pixels.size();
   return 0;
 }
