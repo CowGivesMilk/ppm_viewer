@@ -1,0 +1,2 @@
+/usr/bin/ar qc libppm_core.a CMakeFiles/ppm_core.dir/ppm_core_autogen/mocs_compilation.cpp.o CMakeFiles/ppm_core.dir/src/pixel.cpp.o CMakeFiles/ppm_core.dir/src/ppm.cpp.o
+/usr/bin/ranlib libppm_core.a

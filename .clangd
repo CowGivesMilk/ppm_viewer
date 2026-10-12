@@ -1,0 +1,46 @@
+# clangd configuration for ppm_viewer
+# Restart the language server after editing this file.
+
+CompileFlags:
+  # CMake writes compile_commands.json here (CMAKE_EXPORT_COMPILE_COMMANDS ON)
+  CompilationDatabase: target
+  # GCC-only flags that Qt's CMake config injects; clang rejects them
+  Remove:
+    - -mno-direct-extern-access
+
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+  ClangTidy:
+    Add:
+      - bugprone-*
+      - performance-*
+      - modernize-*
+      - readability-redundant-*
+    Remove:
+      - modernize-use-trailing-return-type
+      - bugprone-easily-swappable-parameters
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  Designators: true
+
+Hover:
+  ShowAKA: true
+
+Completion:
+  AllScopes: true
+
+Index:
+  Background: Build
+
+---
+# Generated code (moc, autogen) is not worth diagnosing
+If:
+  PathMatch: target/.*
+Diagnostics:
+  Suppress: "*"
+  ClangTidy:
+    Remove: ["*"]

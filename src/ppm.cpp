@@ -1,10 +1,13 @@
 #include "ppm.hh"
 
+#include <QColor>
+#include <QImage>
+#include <cstdlib>
 #include <iostream>
+#include <qimage.h>
 #include <stdexcept>
 #include <string>
-
-Ppm::Ppm(std::istream& input) {
+Ppm::Ppm(std::istream &input) {
   std::string magic;
 
   input >> magic;
@@ -26,7 +29,7 @@ Ppm::Ppm(std::istream& input) {
 
   pixels.reserve(width * height);
 
-  for (std::size_t i = 0; i < width * height; ++i) {
+  for (size_t i = 0; i < width * height; ++i) {
     int r, g, b;
 
     if (!(input >> r >> g >> b)) {
@@ -41,4 +44,16 @@ Ppm::Ppm(std::istream& input) {
                         static_cast<unsigned char>(g),
                         static_cast<unsigned char>(b));
   }
+}
+
+QImage Ppm::image() {
+  QImage img(static_cast<int>(width), static_cast<int>(height),
+             QImage::Format_RGB16);
+  for (size_t y = 0; y < height; y++) {
+    for (size_t x = 0; x < width; x++) {
+      auto color = pixels[y * width + x].color();
+      img.setPixelColor(static_cast<int>(x), static_cast<int>(y), color);
+    }
+  }
+  return img;
 }

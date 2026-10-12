@@ -1,17 +1,18 @@
 #ifndef PPM_H
 #define PPM_H
 
+#include "pixel.hh"
+#include <QImage>
 #include <cstddef>
 #include <istream>
 #include <vector>
-
-#include "pixel.hh"
 struct Ppm {
- public:
+public:
   std::size_t width, height;
   unsigned char max_value;
   std::vector<Pixel> pixels;
-  Ppm(std::istream& input);
+  Ppm(std::istream &input);
+  QImage image();
 };
 
 #endif
