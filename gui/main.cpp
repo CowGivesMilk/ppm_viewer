@@ -5,11 +5,15 @@
 #include <CLI/CLI.hpp>
 #include <QApplication>
 #include <QImage>
+#include <QPixmap>
+#include <QResizeEvent>
+#include <QSize>
+#include <QWidget>
+#include <Qt>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <print>
-#include <string>
 static QImage load_image(std::istream &in) {
   Ppm ppm(in);
   return ppm.image();
@@ -45,8 +49,8 @@ int main(int argc, char *argv[]) {
     std::println(stderr, "failed to read a PPM image");
     return 1;
   }
-
   MainWindow w(image);
+  w.resize(image.width(), image.height());
   w.show();
   return app.exec();
 }
