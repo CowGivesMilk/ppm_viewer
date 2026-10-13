@@ -1,8 +1,0 @@
-/home/nimes/Projects/ppm_viewer/target/CMakeFiles/ppm_core.dir
-/home/nimes/Projects/ppm_viewer/target/CMakeFiles/ppm_viewer.dir
-/home/nimes/Projects/ppm_viewer/target/CMakeFiles/edit_cache.dir
-/home/nimes/Projects/ppm_viewer/target/CMakeFiles/rebuild_cache.dir
-/home/nimes/Projects/ppm_viewer/target/CMakeFiles/ppm_core_autogen_timestamp_deps.dir
-/home/nimes/Projects/ppm_viewer/target/CMakeFiles/ppm_core_autogen.dir
-/home/nimes/Projects/ppm_viewer/target/CMakeFiles/ppm_viewer_autogen_timestamp_deps.dir
-/home/nimes/Projects/ppm_viewer/target/CMakeFiles/ppm_viewer_autogen.dir
