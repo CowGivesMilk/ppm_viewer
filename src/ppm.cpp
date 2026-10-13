@@ -48,12 +48,22 @@ Ppm::Ppm(std::istream &input) {
 
 QImage Ppm::image() {
   QImage img(static_cast<int>(width), static_cast<int>(height),
-             QImage::Format_RGB16);
-  for (size_t y = 0; y < height; y++) {
-    for (size_t x = 0; x < width; x++) {
-      auto color = pixels[y * width + x].color();
-      img.setPixelColor(static_cast<int>(x), static_cast<int>(y), color);
+             QImage::Format_RGB32);
+
+  for (size_t y = 0; y < height; ++y) {
+    for (size_t x = 0; x < width; ++x) {
+      const auto &pixel = pixels[y * width + x];
+
+      const auto scale = [this](unsigned int value) {
+        return static_cast<unsigned int>((value * 255U + max_value / 2U) /
+                                         max_value);
+      };
+
+      img.setPixelColor(static_cast<int>(x), static_cast<int>(y),
+                        QColor::fromRgb(scale(pixel.red), scale(pixel.green),
+                                        scale(pixel.blue)));
     }
   }
+
   return img;
 }

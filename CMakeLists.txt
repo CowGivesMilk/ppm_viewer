@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(ppm_viewer
-    VERSION 0.9.9
+    VERSION 1.0.0
     LANGUAGES CXX
 )
 
